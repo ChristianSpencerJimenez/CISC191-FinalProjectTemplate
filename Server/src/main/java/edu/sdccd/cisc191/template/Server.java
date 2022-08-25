@@ -4,7 +4,7 @@ import java.net.*;
 import java.io.*;
 
 /**
-hello
+test 2
  */
 public class Server {
     private ServerSocket serverSocket;
