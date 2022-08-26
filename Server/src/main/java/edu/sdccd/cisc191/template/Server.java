@@ -1,15 +1,23 @@
+// IMPORTS
+
 package edu.sdccd.cisc191.template;//package edu.sdccd.cisc191.template;
 import java.net.*;
 import java.io.*;
 import java.util.Random;
 import java.util.Scanner;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
 This is where I will write modules for the Arch. Project for CISC 191
  -Attempt to concept project
  -Current Module [1]
  */
+
 public class Server {
     public static void main(String[] args) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
+        LocalDateTime now = LocalDateTime.now();
         Scanner consoleInput = new Scanner(System.in);
 
         System.out.println("                                                                                 ");
@@ -25,6 +33,9 @@ public class Server {
         System.out.println("                                                                                 ");
         System.out.println("=================================================================================");
 
+        System.out.println("Hello, This is our meal selector terminal!");
+        System.out.println("We recommend you look at out");
+        System.out.print(dtf.format(now));
 
         String[] dinnerType = {"breakfast", "lunch", "dinner"};
 
@@ -73,9 +84,11 @@ public class Server {
                     } else {
                         if (selectionType.matches(dinnerType[0])) {
                             System.out.println("You chose Breakfast");
+                            BreakfastMenu.breakfastMenuList();
                             continue;
                         } else if (selectionType.matches(dinnerType[1])) {
                             System.out.println("You chose Lunch");
+                            LunchMenu.lunchMenuList();
                             continue;
                         } else if (selectionType.matches(dinnerType[2])) {
                             System.out.println("You chose Dinner");
@@ -93,7 +106,7 @@ public class Server {
     }
 }
 class BreakfastMenu extends Server {
-    public static void main(String[] args) {
+    public static void breakfastMenuList(){
         System.out.println("");
         System.out.println(":::::::::  :::::::::  ::::::::::     :::     :::    ::: ::::::::::   :::      :::::::: :::::::::::");
         System.out.println(":+:    :+: :+:    :+: :+:          :+: :+:   :+:   :+:  :+:        :+: :+:   :+:    :+:    :+:    ");
@@ -104,5 +117,57 @@ class BreakfastMenu extends Server {
         System.out.println("#########  ###    ### ########## ###     ### ###    ### ###      ###     ###  ########     ###    ");
         System.out.println("");
         System.out.println("==================================================================================================");
+        //add menu etc
     }
+}
+class LunchMenu extends Server {
+    public static void lunchMenuList() {
+        System.out.println("");
+        System.out.println(":::       :::    ::: ::::    :::  ::::::::  :::    :::");
+        System.out.println(":+:       :+:    :+: :+:+:   :+: :+:    :+: :+:    :+:");
+        System.out.println("+:+       +:+    +:+ :+:+:+  +:+ +:+        +:+    +:+");
+        System.out.println("+#+       +#+    +:+ +#+ +:+ +#+ +#+        +#++:++#++");
+        System.out.println("+#+       +#+    +#+ +#+  +#+#+# +#+        +#+    +#+");
+        System.out.println("#+#       #+#    #+# #+#   #+#+# #+#    #+# #+#    #+#");
+        System.out.println("########## ########  ###    ####  ########  ###    ###");
+        System.out.println("");
+        System.out.println("======================================================");
+        //add menu etc
+    }
+}
+class DinnerMenu extends Server {
+    public static void dinnerMenuList() {
+        System.out.println("");
+        System.out.println("::::::::: ::::::::::: ::::    ::: ::::    ::: :::::::::: ::::::::: ");
+        System.out.println(":+:    :+:    :+:     :+:+:   :+: :+:+:   :+: :+:        :+:    :+:");
+        System.out.println("+:+    +:+    +:+     :+:+:+  +:+ :+:+:+  +:+ +:+        +:+    +:+");
+        System.out.println("+#+    +:+    +#+     +#+ +:+ +#+ +#+ +:+ +#+ +#++:++#   +#++:++#: ");
+        System.out.println("+#+    +#+    +#+     +#+  +#+#+# +#+  +#+#+# +#+        +#+    +#+");
+        System.out.println("#+#    #+#    #+#     #+#   #+#+# #+#   #+#+# #+#        #+#    #+#");
+        System.out.println("######### ########### ###    #### ###    #### ########## ###    ###");
+        System.out.println("");
+        System.out.println("===================================================================");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
 }
