@@ -29,26 +29,25 @@ public class Server {
         System.out.println(" #+#+# #+#+#  #+#        #+#       #+#    #+# #+#    #+# #+#       #+# #+#       ");
         System.out.println("  ###   ###   ########## ########## ########   ########  ###       ### ##########");
         System.out.println("                                                                                 ");
-        System.out.println("=================================================================================");
+        System.out.println("==================================================================================================");
 
         FoodRecommendedTime.testTime();
         String[] dinnerType = {"breakfast", "lunch", "dinner"};
-
-
         System.out.println("Please type your name below:");
-        System.out.println("=================================================================================");
+        System.out.println("==================================================================================================");
         while (true) {
+
             String userName = consoleInput.nextLine();
             if (userName.length() < 2) {
-                System.out.println("=================================================================================");
+                System.out.println("==================================================================================================");
                 System.out.println("That name is to short!");
-                System.out.println("=================================================================================");
+                System.out.println("==================================================================================================");
                 continue;
             } else if (!userName.matches("[a-zA-Z]+")) {
-                System.out.println("=================================================================================");
+                System.out.println("==================================================================================================");
                 System.out.println("                 Error, please enter only a first name");
                 System.out.println("                  Special Characters are not allowed");
-                System.out.println("=================================================================================");
+                System.out.println("==================================================================================================");
                 continue;
             } else {
 
@@ -62,7 +61,7 @@ public class Server {
                  *
                  */
 
-                System.out.println("=================================================================================");
+                System.out.println("==================================================================================================");
                 System.out.println("                                   Hello " + userName + "!");
                 System.out.println("                             Our Food Options are... ");
                 System.out.println("");
@@ -70,47 +69,47 @@ public class Server {
                 System.out.println("");
                 System.out.println("                          What would you like to have?");
                 System.out.println("                        [Enter one of the three options!]");
-                System.out.println("=================================================================================");
+                System.out.println("==================================================================================================");
             }
                 while (true) {
                     String selectionType = consoleInput.next().toLowerCase();
                     if (selectionType.length() < 2) {
-                            System.out.println("=================================================================================");
+                        System.out.println("==================================================================================================");
                             System.out.println("          That's to short, type out 'Breakfast', 'Lunch', or 'Dinner'!");
-                            System.out.println("=================================================================================");
+                        System.out.println("==================================================================================================");
                     } else if (!selectionType.matches("[a-zA-Z]+")) {
-                            System.out.println("=================================================================================");
+                        System.out.println("==================================================================================================");
                             System.out.println("               That is not a valid type, please try again.");
                             System.out.println("                       -You must only use letters.");
-                            System.out.println("=================================================================================");
+                        System.out.println("==================================================================================================");
                     } else {
                         if (selectionType.matches(dinnerType[0])) {
-                            System.out.println("=================================================================================");
+                            System.out.println("==================================================================================================");
                             System.out.println("                           You chose Breakfast");
                             BreakfastMenu.breakfastMenuList();
                             break;
                         } else if (selectionType.matches(dinnerType[1])) {
-                            System.out.println("=================================================================================");
+                            System.out.println("==================================================================================================");
                             System.out.println("                             You chose Lunch");
                             LunchMenu.lunchMenuList();
                             break;
                         } else if (selectionType.matches(dinnerType[2])) {
-                            System.out.println("=================================================================================");
+                            System.out.println("==================================================================================================");
                             System.out.println("                             You chose Dinner");
                             DinnerMenu.dinnerMenuList();
                             break;
                         }else {
-                            System.out.println("=================================================================================");
+                            System.out.println("==================================================================================================");
                             System.out.println("                             Invalid Selection.");
                             System.out.println("        -Try typing a menu type like 'Breakfast', 'Lunch', or 'Dinner'!");
-                            System.out.println("=================================================================================");
+                            System.out.println("==================================================================================================");
                         }
                     }
                 }
                 break; // This break prevents a looping back to the original while(true) loop.
             }
         }
-    }
+}
 
     //The following code below are subclasses that assist
     //the main server class above.
@@ -119,22 +118,24 @@ class FoodRecommendedTime extends Server {
     public static void testTime() {
         DateTimeFormatter formatted = DateTimeFormatter.ofPattern("HH");
         LocalDateTime current = LocalDateTime.now();
+
         int Time = Integer.parseInt(formatted.format(current));
+
         if (Time < 12) {
             System.out.println("");
             System.out.println("               Hello and good morning! this is our menu terminal.");
             System.out.println("                  We recommend you look at our Breakfast menu!");
-            System.out.println("=================================================================================");
+            System.out.println("==================================================================================================");
 
         } else if (Time < 18) {
             System.out.println("               Hello and good afternoon, this is our menu terminal.");
             System.out.println("                  We recommend you look at our Lunch menu!");
-            System.out.println("=================================================================================");
+            System.out.println("==================================================================================================");
 
         } else if (Time >= 18) {
             System.out.println("               Hello and good evening, this is our menu terminal.");
             System.out.println("                  We recommend you look at our Dinner menu!");
-            System.out.println("=================================================================================");
+            System.out.println("==================================================================================================");
 
         }
     }
@@ -142,6 +143,11 @@ class FoodRecommendedTime extends Server {
 
     class BreakfastMenu extends Server {
         public static void breakfastMenuList() {
+
+            Scanner consoleInput = new Scanner(System.in);
+            String[][] breakfastSelection;
+            breakfastSelection = new String[][] {{"Waffles", "Orange Juice"}, {"Eggs and Bacon", "Coffee"}, {"Cereal", "Milk"}};
+
             System.out.println("");
             System.out.println(":::::::::  :::::::::  ::::::::::     :::     :::    ::: ::::::::::   :::      :::::::: :::::::::::");
             System.out.println(":+:    :+: :+:    :+: :+:          :+: :+:   :+:   :+:  :+:        :+: :+:   :+:    :+:    :+:    ");
@@ -152,6 +158,14 @@ class FoodRecommendedTime extends Server {
             System.out.println("#########  ###    ### ########## ###     ### ###    ### ###      ###     ###  ########     ###    ");
             System.out.println("");
             System.out.println("==================================================================================================");
+            System.out.println("");
+            System.out.println("Our menu includes the following items. [EXPLAIN HOW TO SELECT ITEM HERE]**********                ");
+            String selectionType = consoleInput.next().toLowerCase();
+
+
+
+
+
             //add menu etc
         }
     }
@@ -167,7 +181,7 @@ class FoodRecommendedTime extends Server {
             System.out.println("             #+#       #+#    #+# #+#   #+#+# #+#    #+# #+#    #+#");
             System.out.println("             ########## ########  ###    ####  ########  ###    ###");
             System.out.println("");
-            System.out.println("=================================================================================");
+            System.out.println("==================================================================================================");
             //add menu etc
         }
     }
@@ -183,7 +197,7 @@ class FoodRecommendedTime extends Server {
             System.out.println("      #+#    #+#    #+#     #+#   #+#+# #+#   #+#+# #+#        #+#    #+#");
             System.out.println("      ######### ########### ###    #### ###    #### ########## ###    ###");
             System.out.println("");
-            System.out.println("=================================================================================");
+            System.out.println("==================================================================================================");
         }
     }
 
