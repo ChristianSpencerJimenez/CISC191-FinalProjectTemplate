@@ -145,8 +145,6 @@ class FoodRecommendedTime extends Server {
         public static void breakfastMenuList() {
 
             Scanner consoleInput = new Scanner(System.in);
-            String[][] breakfastSelection;
-            breakfastSelection = new String[][] {{"Waffles", "Orange Juice"}, {"Eggs and Bacon", "Coffee"}, {"Cereal", "Milk"}};
 
             System.out.println("");
             System.out.println(":::::::::  :::::::::  ::::::::::     :::     :::    ::: ::::::::::   :::      :::::::: :::::::::::");
@@ -157,14 +155,37 @@ class FoodRecommendedTime extends Server {
             System.out.println("#+#    #+# #+#    #+# #+#        #+#     #+# #+#   #+#  #+#      #+#     #+# #+#    #+#    #+#    ");
             System.out.println("#########  ###    ### ########## ###     ### ###    ### ###      ###     ###  ########     ###    ");
             System.out.println("");
-            System.out.println("==================================================================================================");
-            System.out.println("");
-            System.out.println("Our menu includes the following items. [EXPLAIN HOW TO SELECT ITEM HERE]**********                ");
+            System.out.println("                  Item Identifiers are the numbers to the left of the food item!");
+            System.out.println("*==============================================*=================================================*");
+            System.out.println("|                                              *                                                 |");
+            System.out.println("|             Breakfast Options                *                  Drink Options                  |");
+            System.out.println("|                                              *                                                 |");
+            System.out.println("|----------------------------------------------*-------------------------------------------------|");
+            System.out.println("|  [1] Waffles                $5.00            *      [4] Coffee                  $3.25          |\n"+
+                               "|  [2] Eggs and Bacon         $6.00            *      [5] Milk                    $1.25          |\n"+
+                               "|  [3] Cereal                 $2.00            *      [6] Orange Juice            $2.35          |");
+            System.out.println("*==============================================*=================================================*");
+
+            //Adding the monetary values to the items on the menu for final price calculation.
+            double waffles = 5.00, eggsAndBacon = 6.00, cereal = 2.00;
+            double coffee = 3.25, milk = 1.25, orangeJuice = 2.35;
+            String[][] breakfastSelection;
+            breakfastSelection = new String[][] {{"Waffles", "Orange Juice"}, {"Eggs and Bacon", "Coffee"}, {"Cereal", "Milk"}};
+
+            //Selection
+            System.out.println("                                 Please Select Your Food Option!\n"+
+                               "                                 Enter the menu number below.");
             String selectionType = consoleInput.next().toLowerCase();
-
-
-
-
+            //selection code
+            // id do a "you selected (item) is this correct?" here
+            // if not repeat the question then break;
+            System.out.println("                                 Please Select Your Drink Option!\n"+
+                               "                                 Enter the menu number below.");
+            //selection code
+            // id do a "you selected (item) is this correct?" here
+            // if not repeat the question then break;
+            // After the break show user the order (food + drink) with total cost then resume Server?
+            //I will need to figure out how to send these values to the server class.
 
             //add menu etc
         }
