@@ -1,9 +1,9 @@
 // IMPORTS
 
-package edu.sdccd.cisc191.template;//package edu.sdccd.cisc191.template;
+package edu.sdccd.cisc191.template;
 import java.net.*;
 import java.io.*;
-import java.util.Random;
+//import java.util.Random;
 import java.util.Scanner;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -63,7 +63,7 @@ public class Server {
                  */
 
                 System.out.println("=================================================================================");
-                System.out.println("                                  Hello " + userName + "!");
+                System.out.println("                                   Hello " + userName + "!");
                 System.out.println("                             Our Food Options are... ");
                 System.out.println("");
                 System.out.println("                          Breakfast, Lunch, or Dinner.");
@@ -75,16 +75,14 @@ public class Server {
                 while (true) {
                     String selectionType = consoleInput.next().toLowerCase();
                     if (selectionType.length() < 2) {
-                        System.out.println("=================================================================================");
-                        System.out.println("          That's to short, type out 'Breakfast', 'Lunch', or 'Dinner'!");
-                        System.out.println("=================================================================================");
-                        continue;
+                            System.out.println("=================================================================================");
+                            System.out.println("          That's to short, type out 'Breakfast', 'Lunch', or 'Dinner'!");
+                            System.out.println("=================================================================================");
                     } else if (!selectionType.matches("[a-zA-Z]+")) {
-                        System.out.println("=================================================================================");
-                        System.out.println("               That is not a valid type, please try again.");
-                        System.out.println("                       -You must only use letters.");
-                        System.out.println("=================================================================================");
-                        continue;
+                            System.out.println("=================================================================================");
+                            System.out.println("               That is not a valid type, please try again.");
+                            System.out.println("                       -You must only use letters.");
+                            System.out.println("=================================================================================");
                     } else {
                         if (selectionType.matches(dinnerType[0])) {
                             System.out.println("=================================================================================");
@@ -104,9 +102,8 @@ public class Server {
                         }else {
                             System.out.println("=================================================================================");
                             System.out.println("                             Invalid Selection.");
-                            System.out.println("       -Try typing a menu type like 'Breakfast', 'Lunch', or 'Dinner'!");
+                            System.out.println("        -Try typing a menu type like 'Breakfast', 'Lunch', or 'Dinner'!");
                             System.out.println("=================================================================================");
-                            continue;
                         }
                     }
                 }
@@ -118,7 +115,7 @@ public class Server {
     //The following code below are subclasses that assist
     //the main server class above.
 
-class FoodRecommendedTime extends Server{
+class FoodRecommendedTime extends Server {
     public static void testTime() {
         DateTimeFormatter formatted = DateTimeFormatter.ofPattern("HH");
         LocalDateTime current = LocalDateTime.now();
@@ -129,63 +126,67 @@ class FoodRecommendedTime extends Server{
             System.out.println("                  We recommend you look at our Breakfast menu!");
             System.out.println("=================================================================================");
 
-        } else if (Time < 18){
+        } else if (Time < 18) {
             System.out.println("               Hello and good afternoon, this is our menu terminal.");
             System.out.println("                  We recommend you look at our Lunch menu!");
             System.out.println("=================================================================================");
 
-        }
-        else
+        } else if (Time >= 18) {
             System.out.println("               Hello and good evening, this is our menu terminal.");
             System.out.println("                  We recommend you look at our Dinner menu!");
-        System.out.println("=================================================================================");
+            System.out.println("=================================================================================");
 
+        }
     }
 }
-class BreakfastMenu extends Server {
-    public static void breakfastMenuList(){
-        System.out.println("");
-        System.out.println(":::::::::  :::::::::  ::::::::::     :::     :::    ::: ::::::::::   :::      :::::::: :::::::::::");
-        System.out.println(":+:    :+: :+:    :+: :+:          :+: :+:   :+:   :+:  :+:        :+: :+:   :+:    :+:    :+:    ");
-        System.out.println("+:+    +:+ +:+    +:+ +:+         +:+   +:+  +:+  +:+   +:+       +:+   +:+  +:+           +:+    ");
-        System.out.println("+#++:++#+  +#++:++#:  +#++:++#   +#++:++#++: +#++:++    :#::+::# +#++:++#++: +#++:++#++    +#+    ");
-        System.out.println("+#+    +#+ +#+    +#+ +#+        +#+     +#+ +#+  +#+   +#+      +#+     +#+        +#+    +#+    ");
-        System.out.println("#+#    #+# #+#    #+# #+#        #+#     #+# #+#   #+#  #+#      #+#     #+# #+#    #+#    #+#    ");
-        System.out.println("#########  ###    ### ########## ###     ### ###    ### ###      ###     ###  ########     ###    ");
-        System.out.println("");
-        System.out.println("==================================================================================================");
-        //add menu etc
+
+    class BreakfastMenu extends Server {
+        public static void breakfastMenuList() {
+            System.out.println("");
+            System.out.println(":::::::::  :::::::::  ::::::::::     :::     :::    ::: ::::::::::   :::      :::::::: :::::::::::");
+            System.out.println(":+:    :+: :+:    :+: :+:          :+: :+:   :+:   :+:  :+:        :+: :+:   :+:    :+:    :+:    ");
+            System.out.println("+:+    +:+ +:+    +:+ +:+         +:+   +:+  +:+  +:+   +:+       +:+   +:+  +:+           +:+    ");
+            System.out.println("+#++:++#+  +#++:++#:  +#++:++#   +#++:++#++: +#++:++    :#::+::# +#++:++#++: +#++:++#++    +#+    ");
+            System.out.println("+#+    +#+ +#+    +#+ +#+        +#+     +#+ +#+  +#+   +#+      +#+     +#+        +#+    +#+    ");
+            System.out.println("#+#    #+# #+#    #+# #+#        #+#     #+# #+#   #+#  #+#      #+#     #+# #+#    #+#    #+#    ");
+            System.out.println("#########  ###    ### ########## ###     ### ###    ### ###      ###     ###  ########     ###    ");
+            System.out.println("");
+            System.out.println("==================================================================================================");
+            //add menu etc
+        }
     }
-}
-class LunchMenu extends Server {
-    public static void lunchMenuList() {
-        System.out.println("");
-        System.out.println(":::       :::    ::: ::::    :::  ::::::::  :::    :::");
-        System.out.println(":+:       :+:    :+: :+:+:   :+: :+:    :+: :+:    :+:");
-        System.out.println("+:+       +:+    +:+ :+:+:+  +:+ +:+        +:+    +:+");
-        System.out.println("+#+       +#+    +:+ +#+ +:+ +#+ +#+        +#++:++#++");
-        System.out.println("+#+       +#+    +#+ +#+  +#+#+# +#+        +#+    +#+");
-        System.out.println("#+#       #+#    #+# #+#   #+#+# #+#    #+# #+#    #+#");
-        System.out.println("########## ########  ###    ####  ########  ###    ###");
-        System.out.println("");
-        System.out.println("======================================================");
-        //add menu etc
+
+    class LunchMenu extends Server {
+        public static void lunchMenuList() {
+            System.out.println("");
+            System.out.println("             :::       :::    ::: ::::    :::  ::::::::  :::    :::");
+            System.out.println("             :+:       :+:    :+: :+:+:   :+: :+:    :+: :+:    :+:");
+            System.out.println("             +:+       +:+    +:+ :+:+:+  +:+ +:+        +:+    +:+");
+            System.out.println("             +#+       +#+    +:+ +#+ +:+ +#+ +#+        +#++:++#++");
+            System.out.println("             +#+       +#+    +#+ +#+  +#+#+# +#+        +#+    +#+");
+            System.out.println("             #+#       #+#    #+# #+#   #+#+# #+#    #+# #+#    #+#");
+            System.out.println("             ########## ########  ###    ####  ########  ###    ###");
+            System.out.println("");
+            System.out.println("=================================================================================");
+            //add menu etc
+        }
     }
-}
-class DinnerMenu extends Server {
-    public static void dinnerMenuList() {
-        System.out.println("");
-        System.out.println("::::::::: ::::::::::: ::::    ::: ::::    ::: :::::::::: ::::::::: ");
-        System.out.println(":+:    :+:    :+:     :+:+:   :+: :+:+:   :+: :+:        :+:    :+:");
-        System.out.println("+:+    +:+    +:+     :+:+:+  +:+ :+:+:+  +:+ +:+        +:+    +:+");
-        System.out.println("+#+    +:+    +#+     +#+ +:+ +#+ +#+ +:+ +#+ +#++:++#   +#++:++#: ");
-        System.out.println("+#+    +#+    +#+     +#+  +#+#+# +#+  +#+#+# +#+        +#+    +#+");
-        System.out.println("#+#    #+#    #+#     #+#   #+#+# #+#   #+#+# #+#        #+#    #+#");
-        System.out.println("######### ########### ###    #### ###    #### ########## ###    ###");
-        System.out.println("");
-        System.out.println("===================================================================");
+
+    class DinnerMenu extends Server {
+        public static void dinnerMenuList() {
+            System.out.println("");
+            System.out.println("      ::::::::: ::::::::::: ::::    ::: ::::    ::: :::::::::: ::::::::: ");
+            System.out.println("      :+:    :+:    :+:     :+:+:   :+: :+:+:   :+: :+:        :+:    :+:");
+            System.out.println("      +:+    +:+    +:+     :+:+:+  +:+ :+:+:+  +:+ +:+        +:+    +:+");
+            System.out.println("      +#+    +:+    +#+     +#+ +:+ +#+ +#+ +:+ +#+ +#++:++#   +#++:++#: ");
+            System.out.println("      +#+    +#+    +#+     +#+  +#+#+# +#+  +#+#+# +#+        +#+    +#+");
+            System.out.println("      #+#    #+#    #+#     #+#   #+#+# #+#   #+#+# #+#        #+#    #+#");
+            System.out.println("      ######### ########### ###    #### ###    #### ########## ###    ###");
+            System.out.println("");
+            System.out.println("=================================================================================");
+        }
     }
-}
+
 
 
 
