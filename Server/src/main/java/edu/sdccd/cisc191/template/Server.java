@@ -78,7 +78,7 @@ public class Server {
                             System.out.println("You chose Lunch");
                             continue;
                         } else if (selectionType.matches(dinnerType[2])) {
-                            System.out.println("You chose Lunch");
+                            System.out.println("You chose Dinner");
                             continue;
                         }else {
                             System.out.println("Invalid Selection.");
@@ -90,5 +90,19 @@ public class Server {
                 }
             }
         }
+    }
+}
+class BreakfastMenu extends Server {
+    public static void main(String[] args) {
+        System.out.println("");
+        System.out.println(":::::::::  :::::::::  ::::::::::     :::     :::    ::: ::::::::::   :::      :::::::: :::::::::::");
+        System.out.println(":+:    :+: :+:    :+: :+:          :+: :+:   :+:   :+:  :+:        :+: :+:   :+:    :+:    :+:    ");
+        System.out.println("+:+    +:+ +:+    +:+ +:+         +:+   +:+  +:+  +:+   +:+       +:+   +:+  +:+           +:+    ");
+        System.out.println("+#++:++#+  +#++:++#:  +#++:++#   +#++:++#++: +#++:++    :#::+::# +#++:++#++: +#++:++#++    +#+    ");
+        System.out.println("+#+    +#+ +#+    +#+ +#+        +#+     +#+ +#+  +#+   +#+      +#+     +#+        +#+    +#+    ");
+        System.out.println("#+#    #+# #+#    #+# #+#        #+#     #+# #+#   #+#  #+#      #+#     #+# #+#    #+#    #+#    ");
+        System.out.println("#########  ###    ### ########## ###     ### ###    ### ###      ###     ###  ########     ###    ");
+        System.out.println("");
+        System.out.println("==================================================================================================");
     }
 }
