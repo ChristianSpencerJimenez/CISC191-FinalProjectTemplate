@@ -1,15 +1,12 @@
 package edu.sdccd.cisc191.template;//package edu.sdccd.cisc191.template;
-import java.net.*;
-import java.io.*;
-import java.util.Random;
 import java.util.Scanner;
 /**
-This is where I will write modules for the Arch. Project for CISC 191
+ This is where I will write modules for the Arch. Project for CISC 191
  -Attempt to concept project
  -Current Module [1]
  */
 public class Server {
-    public static void main(String[] args) {
+    static void main(String[] args) {
         Scanner consoleInput = new Scanner(System.in);
 
         System.out.println("                                                                                 ");
@@ -59,7 +56,10 @@ public class Server {
                 System.out.println("What would you like to have?");
                 System.out.println("[Enter one of the three options!]");
                 System.out.println("                         ");
+
                 while (true) {
+
+
                     String selectionType = consoleInput.next().toLowerCase();
                     if (selectionType.length() < 2) {
                         System.out.println("That's to short, type out 'Breakfast', 'Lunch', or 'Dinner'!");
@@ -85,10 +85,32 @@ public class Server {
                             System.out.println("-Try typing a menu type like 'Breakfast', 'Lunch', or 'Dinner'!");
                             continue;
                         }
-                            // I plan to use the case statement to detect what value was chosen in the menu array then display the correct menu.
+                        // I plan to use the case statement to detect what value was chosen in the menu array then display the correct menu.
                     }
                 }
             }
         }
     }
 }
+
+//class BreakfastMenu extends Server {
+//  static void main(String[] args) {
+//      System.out.println("hello this is where the menu would be");
+
+
+
+
+
+
+
+// String[][] menuType = { {"breakfastMenu", "lunchMenu", "dinnerMenu"     },
+//                         {"Pancakes and Eggs", "Burger and Fries", "Steak"},
+//                         {"Eggs and Waffle", "Fish and chips", "Fajitas"  },
+//                        {"Cereal", "Extreme Sandwich", "Pizza"           },
+
+
+
+
+
+
+
