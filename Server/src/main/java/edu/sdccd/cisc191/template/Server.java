@@ -1,12 +1,15 @@
 // IMPORTS
 
 package edu.sdccd.cisc191.template;
+
+
 import java.net.*;
 import java.io.*;
 //import java.util.Random;
 import java.util.Scanner;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Set;
 
 /**
 This is where I will write modules for the Arch. Project for CISC 191
@@ -15,6 +18,8 @@ This is where I will write modules for the Arch. Project for CISC 191
  */
 
 public class Server {
+    public String test = "test";
+
     public static void main(String[] args) {
         Scanner consoleInput = new Scanner(System.in);
 
@@ -30,6 +35,7 @@ public class Server {
         System.out.println("  ###   ###   ########## ########## ########   ########  ###       ### ##########");
         System.out.println("                                                                                 ");
         System.out.println("==================================================================================================");
+
 
         FoodRecommendedTime.testTime();
         String[] dinnerType = {"breakfast", "lunch", "dinner"};
@@ -118,23 +124,20 @@ class FoodRecommendedTime extends Server {
     public static void testTime() {
         DateTimeFormatter formatted = DateTimeFormatter.ofPattern("HH");
         LocalDateTime current = LocalDateTime.now();
-
         int Time = Integer.parseInt(formatted.format(current));
-
         if (Time < 12) {
             System.out.println("");
-            System.out.println("               Hello and good morning! this is our menu terminal.");
-            System.out.println("                  We recommend you look at our Breakfast menu!");
+            System.out.println("                     Hello and good morning! this is our menu terminal.");
+            System.out.println("                        We recommend you look at our Breakfast menu!");
             System.out.println("==================================================================================================");
 
         } else if (Time < 18) {
-            System.out.println("               Hello and good afternoon, this is our menu terminal.");
-            System.out.println("                  We recommend you look at our Lunch menu!");
+            System.out.println("                     Hello and good afternoon, this is our menu terminal.");
+            System.out.println("                        We recommend you look at our Lunch menu!");
             System.out.println("==================================================================================================");
-
         } else if (Time >= 18) {
-            System.out.println("               Hello and good evening, this is our menu terminal.");
-            System.out.println("                  We recommend you look at our Dinner menu!");
+            System.out.println("                     Hello and good evening, this is our menu terminal.");
+            System.out.println("                        We recommend you look at our Dinner menu!");
             System.out.println("==================================================================================================");
 
         }
@@ -145,6 +148,7 @@ class FoodRecommendedTime extends Server {
         public static void breakfastMenuList() {
 
             Scanner consoleInput = new Scanner(System.in);
+            String[] confirmSelection = {"yes", "no",};
 
             System.out.println("");
             System.out.println(":::::::::  :::::::::  ::::::::::     :::     :::    ::: ::::::::::   :::      :::::::: :::::::::::");
@@ -161,66 +165,110 @@ class FoodRecommendedTime extends Server {
             System.out.println("|             Breakfast Options                *                  Drink Options                  |");
             System.out.println("|                                              *                                                 |");
             System.out.println("|----------------------------------------------*-------------------------------------------------|");
-            System.out.println("|  [1] Waffles                $5.00            *      [4] Coffee                  $3.25          |\n"+
-                               "|  [2] Eggs and Bacon         $6.00            *      [5] Milk                    $1.25          |\n"+
-                               "|  [3] Cereal                 $2.00            *      [6] Orange Juice            $2.35          |");
+            System.out.println("|  [1] Waffles                $5.00            *      [4] Coffee                  $3.25          |\n" +
+                    "|  [2] Eggs and Bacon         $6.00            *      [5] Milk                    $1.25          |\n" +
+                    "|  [3] Cereal                 $2.00            *      [6] Orange Juice            $2.35          |");
             System.out.println("*==============================================*=================================================*");
+
 
             //Adding the monetary values to the items on the menu for final price calculation.
             double waffles = 5.00, eggsAndBacon = 6.00, cereal = 2.00;
             double coffee = 3.25, milk = 1.25, orangeJuice = 2.35;
-            String[][] breakfastSelection;
-            breakfastSelection = new String[][] {{"Waffles", "Orange Juice"}, {"Eggs and Bacon", "Coffee"}, {"Cereal", "Milk"}};
+            int selectedFoodInt = 0, selectedDrink = 0;
+
+            int[][] breakfastSelection;                                                     // THIS IS THE DOUBLE ARRAY, Will set values to appropriate choices in menu to send to final.
+            breakfastSelection = new int[1][1];
+
+            String[] menuItemList;
+            menuItemList = new String[]{"Waffles", "Eggs and Bacon", "Cereal"};
 
             //Selection
-            System.out.println("                                 Please Select Your Food Option!\n"+
-                               "                                 Enter the menu number below.");
-            String selectionType = consoleInput.next().toLowerCase();
-            //selection code
-            // id do a "you selected (item) is this correct?" here
-            // if not repeat the question then break;
-            System.out.println("                                 Please Select Your Drink Option!\n"+
-                               "                                 Enter the menu number below.");
-            //selection code
-            // id do a "you selected (item) is this correct?" here
-            // if not repeat the question then break;
-            // After the break show user the order (food + drink) with total cost then resume Server?
-            //I will need to figure out how to send these values to the server class.
+            System.out.println(" " +
+                    "                                Please Select Your Food Option!\n" +
+                    "                                 Enter the menu number below.");
 
-            //add menu etc
+            while (true) {
+                String selectionMenuType = consoleInput.next();
+                int selectedFood = 0;
+                if (selectionMenuType.length() > 1) {
+                    System.out.println("please only enter a single number selection.");
+
+                } else if (!selectionMenuType.matches("[1-3]+")) {
+                    System.out.println("Please enter a number selection between [1, 2, 3]");
+
+                } else
+                    selectedFood = Integer.parseInt(selectionMenuType);
+
+                if (selectedFood == 1) {
+                    System.out.println("you have selected menu item " +selectedFoodInt + ", " + menuItemList[0] + "\n" + "is this correct?");
+                    consoleInput.next();
+
+                    break;
+                } else if (selectedFood == 2) {
+                    System.out.println("you have selected menu item " +selectedFoodInt + ", " + menuItemList[1] + "\n" + "is this correct?");
+                    consoleInput.next();
+
+                    break;
+                } else if (selectedFood == 3) {
+
+                    selectedFoodInt = 3;
+                    System.out.println("you have selected menu item " +selectedFoodInt + ", " + menuItemList[2] + "\n" + "is this correct?");
+                    consoleInput.next();
+                    break;
+                }
+            }
         }
     }
+               //DRINK SELECTION AREA
+        //  System.out.println("                                 Please Select Your Drink Option!\n" +
+        //          "                                 Enter the menu number below.");
+        //selection code
+        // id do a "you selected (item) is this correct?" here
+        // if not repeat the question then break;
+        // After the break show user the order (food + drink) with total cost then resume Server?
+        //I will need to figure out how to send these values to the server class.
 
-    class LunchMenu extends Server {
-        public static void lunchMenuList() {
-            System.out.println("");
-            System.out.println("             :::       :::    ::: ::::    :::  ::::::::  :::    :::");
-            System.out.println("             :+:       :+:    :+: :+:+:   :+: :+:    :+: :+:    :+:");
-            System.out.println("             +:+       +:+    +:+ :+:+:+  +:+ +:+        +:+    +:+");
-            System.out.println("             +#+       +#+    +:+ +#+ +:+ +#+ +#+        +#++:++#++");
-            System.out.println("             +#+       +#+    +#+ +#+  +#+#+# +#+        +#+    +#+");
-            System.out.println("             #+#       #+#    #+# #+#   #+#+# #+#    #+# #+#    #+#");
-            System.out.println("             ########## ########  ###    ####  ########  ###    ###");
-            System.out.println("");
-            System.out.println("==================================================================================================");
-            //add menu etc
-        }
-    }
+        //add menu etc
 
-    class DinnerMenu extends Server {
-        public static void dinnerMenuList() {
-            System.out.println("");
-            System.out.println("      ::::::::: ::::::::::: ::::    ::: ::::    ::: :::::::::: ::::::::: ");
-            System.out.println("      :+:    :+:    :+:     :+:+:   :+: :+:+:   :+: :+:        :+:    :+:");
-            System.out.println("      +:+    +:+    +:+     :+:+:+  +:+ :+:+:+  +:+ +:+        +:+    +:+");
-            System.out.println("      +#+    +:+    +#+     +#+ +:+ +#+ +#+ +:+ +#+ +#++:++#   +#++:++#: ");
-            System.out.println("      +#+    +#+    +#+     +#+  +#+#+# +#+  +#+#+# +#+        +#+    +#+");
-            System.out.println("      #+#    #+#    #+#     #+#   #+#+# #+#   #+#+# #+#        #+#    #+#");
-            System.out.println("      ######### ########### ###    #### ###    #### ########## ###    ###");
-            System.out.println("");
-            System.out.println("==================================================================================================");
+
+        class LunchMenu extends Server {
+            public static void lunchMenuList() {
+                System.out.println("");
+                System.out.println("             :::       :::    ::: ::::    :::  ::::::::  :::    :::");
+                System.out.println("             :+:       :+:    :+: :+:+:   :+: :+:    :+: :+:    :+:");
+                System.out.println("             +:+       +:+    +:+ :+:+:+  +:+ +:+        +:+    +:+");
+                System.out.println("             +#+       +#+    +:+ +#+ +:+ +#+ +#+        +#++:++#++");
+                System.out.println("             +#+       +#+    +#+ +#+  +#+#+# +#+        +#+    +#+");
+                System.out.println("             #+#       #+#    #+# #+#   #+#+# #+#    #+# #+#    #+#");
+                System.out.println("             ########## ########  ###    ####  ########  ###    ###");
+                System.out.println("");
+                System.out.println("==================================================================================================");
+                //add menu etc
+            }
         }
-    }
+
+        class DinnerMenu extends Server {
+            public static void dinnerMenuList() {
+                System.out.println("");
+                System.out.println("      ::::::::: ::::::::::: ::::    ::: ::::    ::: :::::::::: ::::::::: ");
+                System.out.println("      :+:    :+:    :+:     :+:+:   :+: :+:+:   :+: :+:        :+:    :+:");
+                System.out.println("      +:+    +:+    +:+     :+:+:+  +:+ :+:+:+  +:+ +:+        +:+    +:+");
+                System.out.println("      +#+    +:+    +#+     +#+ +:+ +#+ +#+ +:+ +#+ +#++:++#   +#++:++#: ");
+                System.out.println("      +#+    +#+    +#+     +#+  +#+#+# +#+  +#+#+# +#+        +#+    +#+");
+                System.out.println("      #+#    #+#    #+#     #+#   #+#+# #+#   #+#+# #+#        #+#    #+#");
+                System.out.println("      ######### ########### ###    #### ###    #### ########## ###    ###");
+                System.out.println("");
+                System.out.println("==================================================================================================");
+            }
+        }
+
+        class ConfirmSelectionMenu extends Server {
+            public static void confirmSelectionMenu() {
+                System.out.println("test final");
+            }
+        }
+
+
 
 
 
