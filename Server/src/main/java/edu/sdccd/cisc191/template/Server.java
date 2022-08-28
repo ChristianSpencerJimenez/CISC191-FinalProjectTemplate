@@ -19,7 +19,7 @@ This is where I will write modules for the Arch. Project for CISC 191
 
 public class Server {
     public String test = "test";
-
+    protected int testingInt = 1;
     public static void main(String[] args) {
         Scanner consoleInput = new Scanner(System.in);
 
@@ -166,8 +166,8 @@ class FoodRecommendedTime extends Server {
             System.out.println("|                                              *                                                 |");
             System.out.println("|----------------------------------------------*-------------------------------------------------|");
             System.out.println("|  [1] Waffles                $5.00            *      [4] Coffee                  $3.25          |\n" +
-                    "|  [2] Eggs and Bacon         $6.00            *      [5] Milk                    $1.25          |\n" +
-                    "|  [3] Cereal                 $2.00            *      [6] Orange Juice            $2.35          |");
+                               "|  [2] Eggs and Bacon         $6.00            *      [5] Milk                    $1.25          |\n" +
+                               "|  [3] Cereal                 $2.00            *      [6] Orange Juice            $2.35          |");
             System.out.println("*==============================================*=================================================*");
 
 
@@ -175,12 +175,11 @@ class FoodRecommendedTime extends Server {
             double waffles = 5.00, eggsAndBacon = 6.00, cereal = 2.00;
             double coffee = 3.25, milk = 1.25, orangeJuice = 2.35;
             int selectedFoodInt = 0, selectedDrink = 0;
-
             int[][] breakfastSelection;                                                     // THIS IS THE DOUBLE ARRAY, Will set values to appropriate choices in menu to send to final.
             breakfastSelection = new int[1][1];
 
-            String[] menuItemList;
-            menuItemList = new String[]{"Waffles", "Eggs and Bacon", "Cereal"};
+            String[] menuFoodItemList;
+            menuFoodItemList = new String[]{"Waffles", "Eggs and Bacon", "Cereal"};
 
             //Selection
             System.out.println(" " +
@@ -200,21 +199,36 @@ class FoodRecommendedTime extends Server {
                     selectedFood = Integer.parseInt(selectionMenuType);
 
                 if (selectedFood == 1) {
-                    System.out.println("you have selected menu item " +selectedFoodInt + ", " + menuItemList[0] + "\n" + "is this correct?");
+                    System.out.println("you have selected menu item " +selectedFoodInt + ", " + menuFoodItemList[0] + "\n" + "is this correct?");
                     consoleInput.next();
 
                     break;
                 } else if (selectedFood == 2) {
-                    System.out.println("you have selected menu item " +selectedFoodInt + ", " + menuItemList[1] + "\n" + "is this correct?");
+                    System.out.println("you have selected menu item " +selectedFoodInt + ", " + menuFoodItemList[1] + "\n" + "is this correct?");
                     consoleInput.next();
 
                     break;
                 } else if (selectedFood == 3) {
 
                     selectedFoodInt = 3;
-                    System.out.println("you have selected menu item " +selectedFoodInt + ", " + menuItemList[2] + "\n" + "is this correct?");
+                    System.out.println("you have selected menu item " +selectedFoodInt + ", " + menuFoodItemList[2] + "\n" + "is this correct?");
                     consoleInput.next();
-                    break;
+                    String selectionYesNo = consoleInput.next().toLowerCase();
+                    if (selectionYesNo.length() < 1) {
+                        System.out.println("Please enter yes or no.");
+
+                    } else if (!selectionYesNo.matches("[a-zA-Z]+")) {
+                        System.out.println("Please enter yes or no.");
+                    } else{
+                        if (selectionYesNo.matches(confirmSelection[0])) {
+                            System.out.println("Great,");
+                            break;
+                        }
+                        else if (selectionYesNo.matches(confirmSelection[1])){
+                            breakfastMenuList();
+                        }
+                    }
+                   break;
                 }
             }
         }
