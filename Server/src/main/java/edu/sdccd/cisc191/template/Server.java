@@ -3,13 +3,13 @@
 package edu.sdccd.cisc191.template;
 
 
-import java.net.*;
-import java.io.*;
+//import java.net.*;
+//import java.io.*;
 //import java.util.Random;
 import java.util.Scanner;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Set;
+//import java.util.Set;
 
 /**
 This is where I will write modules for the Arch. Project for CISC 191
@@ -18,9 +18,6 @@ This is where I will write modules for the Arch. Project for CISC 191
  */
 
 public class Server {
-    public String test = "test";
-    protected int testingInt = 1;
-
     public static void main(String[] args) {
         Scanner consoleInput = new Scanner(System.in);
 
@@ -71,9 +68,9 @@ public class Server {
                 System.out.println("==================================================================================================");
                 System.out.println("                                   Hello " + userName + "!");
                 System.out.println("                             Our Food Options are... ");
-                System.out.println("");
+                System.out.println();
                 System.out.println("                          Breakfast, Lunch, or Dinner.");
-                System.out.println("");
+                System.out.println();
                 System.out.println("                          What would you like to have?");
                 System.out.println("                        [Enter one of the three options!]");
                 System.out.println("==================================================================================================");
@@ -132,7 +129,7 @@ class FoodRecommendedTime extends Server {
         LocalDateTime current = LocalDateTime.now();
         int Time = Integer.parseInt(formatted.format(current));
         if (Time < 12) {
-            System.out.println("");
+            System.out.println();
             System.out.println("                     Hello and good morning! this is our menu terminal.");
             System.out.println("                        We recommend you look at our Breakfast menu!");
             System.out.println("==================================================================================================");
@@ -154,9 +151,9 @@ class FoodRecommendedTime extends Server {
         public static void breakfastMenuList() {
 
             Scanner consoleInput = new Scanner(System.in);
-            String[] confirmSelection = {"yes", "no",};
+           // String[] confirmSelection = {"yes", "no",};           ***YES NO SELECTION
 
-            System.out.println("");
+            System.out.println();
             System.out.println(":::::::::  :::::::::  ::::::::::     :::     :::    ::: ::::::::::   :::      :::::::: :::::::::::");
             System.out.println(":+:    :+: :+:    :+: :+:          :+: :+:   :+:   :+:  :+:        :+: :+:   :+:    :+:    :+:    ");
             System.out.println("+:+    +:+ +:+    +:+ +:+         +:+   +:+  +:+  +:+   +:+       +:+   +:+  +:+           +:+    ");
@@ -164,7 +161,7 @@ class FoodRecommendedTime extends Server {
             System.out.println("+#+    +#+ +#+    +#+ +#+        +#+     +#+ +#+  +#+   +#+      +#+     +#+        +#+    +#+    ");
             System.out.println("#+#    #+# #+#    #+# #+#        #+#     #+# #+#   #+#  #+#      #+#     #+# #+#    #+#    #+#    ");
             System.out.println("#########  ###    ### ########## ###     ### ###    ### ###      ###     ###  ########     ###    ");
-            System.out.println("");
+            System.out.println();
             System.out.println("                  Item Identifiers are the numbers to the left of the food item!");
             System.out.println("*==============================================*=================================================*");
             System.out.println("|                                              *                                                 |");
@@ -239,7 +236,7 @@ class FoodRecommendedTime extends Server {
 
         class LunchMenu extends Server {
             public static void lunchMenuList() {
-                System.out.println("");
+                System.out.println();
                 System.out.println("             :::       :::    ::: ::::    :::  ::::::::  :::    :::");
                 System.out.println("             :+:       :+:    :+: :+:+:   :+: :+:    :+: :+:    :+:");
                 System.out.println("             +:+       +:+    +:+ :+:+:+  +:+ +:+        +:+    +:+");
@@ -247,7 +244,7 @@ class FoodRecommendedTime extends Server {
                 System.out.println("             +#+       +#+    +#+ +#+  +#+#+# +#+        +#+    +#+");
                 System.out.println("             #+#       #+#    #+# #+#   #+#+# #+#    #+# #+#    #+#");
                 System.out.println("             ########## ########  ###    ####  ########  ###    ###");
-                System.out.println("");
+                System.out.println();
                 System.out.println("==================================================================================================");
                 //add menu etc
             }
@@ -255,7 +252,7 @@ class FoodRecommendedTime extends Server {
 
         class DinnerMenu extends Server {
             public static void dinnerMenuList() {
-                System.out.println("");
+                System.out.println();
                 System.out.println("      ::::::::: ::::::::::: ::::    ::: ::::    ::: :::::::::: ::::::::: ");
                 System.out.println("      :+:    :+:    :+:     :+:+:   :+: :+:+:   :+: :+:        :+:    :+:");
                 System.out.println("      +:+    +:+    +:+     :+:+:+  +:+ :+:+:+  +:+ +:+        +:+    +:+");
@@ -263,7 +260,7 @@ class FoodRecommendedTime extends Server {
                 System.out.println("      +#+    +#+    +#+     +#+  +#+#+# +#+  +#+#+# +#+        +#+    +#+");
                 System.out.println("      #+#    #+#    #+#     #+#   #+#+# #+#   #+#+# #+#        #+#    #+#");
                 System.out.println("      ######### ########### ###    #### ###    #### ########## ###    ###");
-                System.out.println("");
+                System.out.println();
                 System.out.println("==================================================================================================");
             }
         }
