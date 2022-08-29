@@ -20,6 +20,7 @@ This is where I will write modules for the Arch. Project for CISC 191
 public class Server {
     public String test = "test";
     protected int testingInt = 1;
+
     public static void main(String[] args) {
         Scanner consoleInput = new Scanner(System.in);
 
@@ -77,45 +78,50 @@ public class Server {
                 System.out.println("                        [Enter one of the three options!]");
                 System.out.println("==================================================================================================");
             }
-                while (true) {
-                    String selectionType = consoleInput.next().toLowerCase();
-                    if (selectionType.length() < 2) {
+            while (true) {
+                String selectionType = consoleInput.next().toLowerCase();
+                if (selectionType.length() < 2) {
+                    System.out.println("==================================================================================================");
+                    System.out.println("          That's to short, type out 'Breakfast', 'Lunch', or 'Dinner'!");
+                    System.out.println("==================================================================================================");
+
+                } else if (!selectionType.matches("[a-zA-Z]+")) {
+                    System.out.println("==================================================================================================");
+                    System.out.println("               That is not a valid type, please try again.");
+                    System.out.println("                       -You must only use letters.");
+                    System.out.println("==================================================================================================");
+
+                } else {
+                    if (selectionType.matches(dinnerType[0])) {
                         System.out.println("==================================================================================================");
-                            System.out.println("          That's to short, type out 'Breakfast', 'Lunch', or 'Dinner'!");
+                        System.out.println("                           You chose Breakfast");
+                        BreakfastMenu.breakfastMenuList();
+                        break;
+
+                    } else if (selectionType.matches(dinnerType[1])) {
                         System.out.println("==================================================================================================");
-                    } else if (!selectionType.matches("[a-zA-Z]+")) {
+                        System.out.println("                             You chose Lunch");
+                        LunchMenu.lunchMenuList();
+                        break;
+
+                    } else if (selectionType.matches(dinnerType[2])) {
                         System.out.println("==================================================================================================");
-                            System.out.println("               That is not a valid type, please try again.");
-                            System.out.println("                       -You must only use letters.");
-                        System.out.println("==================================================================================================");
+                        System.out.println("                             You chose Dinner");
+                        DinnerMenu.dinnerMenuList();
+                        break;
+
                     } else {
-                        if (selectionType.matches(dinnerType[0])) {
-                            System.out.println("==================================================================================================");
-                            System.out.println("                           You chose Breakfast");
-                            BreakfastMenu.breakfastMenuList();
-                            break;
-                        } else if (selectionType.matches(dinnerType[1])) {
-                            System.out.println("==================================================================================================");
-                            System.out.println("                             You chose Lunch");
-                            LunchMenu.lunchMenuList();
-                            break;
-                        } else if (selectionType.matches(dinnerType[2])) {
-                            System.out.println("==================================================================================================");
-                            System.out.println("                             You chose Dinner");
-                            DinnerMenu.dinnerMenuList();
-                            break;
-                        }else {
-                            System.out.println("==================================================================================================");
-                            System.out.println("                             Invalid Selection.");
-                            System.out.println("        -Try typing a menu type like 'Breakfast', 'Lunch', or 'Dinner'!");
-                            System.out.println("==================================================================================================");
-                        }
+                        System.out.println("==================================================================================================");
+                        System.out.println("                             Invalid Selection.");
+                        System.out.println("        -Try typing a menu type like 'Breakfast', 'Lunch', or 'Dinner'!");
+                        System.out.println("==================================================================================================");
                     }
                 }
-                break; // This break prevents a looping back to the original while(true) loop.
-            }
+            }break;// This break prevents a looping back to the original while(true) loop in SERVER class.
         }
-}
+    }
+} //end of SERVER class
+
 
     //The following code below are subclasses that assist
     //the main server class above.
@@ -175,8 +181,8 @@ class FoodRecommendedTime extends Server {
             double waffles = 5.00, eggsAndBacon = 6.00, cereal = 2.00;
             double coffee = 3.25, milk = 1.25, orangeJuice = 2.35;
             int selectedFoodInt = 0, selectedDrink = 0;
-            int[][] breakfastSelection;                                                     // THIS IS THE DOUBLE ARRAY, Will set values to appropriate choices in menu to send to final.
-            breakfastSelection = new int[1][1];
+            String[][] breakfastSelection;                                                     // THIS IS THE DOUBLE ARRAY, Will set values to appropriate choices in menu to send to final.
+            breakfastSelection = new String[2][2];                                             //USE THIS 2D ARRAY TO STORE DATA FOR FINAL SELECTION
 
             String[] menuFoodItemList;
             menuFoodItemList = new String[]{"Waffles", "Eggs and Bacon", "Cereal"};
@@ -199,37 +205,23 @@ class FoodRecommendedTime extends Server {
                     selectedFood = Integer.parseInt(selectionMenuType);
 
                 if (selectedFood == 1) {
-                    System.out.println("you have selected menu item " +selectedFoodInt + ", " + menuFoodItemList[0] + "\n" + "is this correct?");
+                    System.out.println("you have selected menu item " +selectedFood + ", " + menuFoodItemList[0] + "\n");
                     consoleInput.next();
 
                     break;
                 } else if (selectedFood == 2) {
-                    System.out.println("you have selected menu item " +selectedFoodInt + ", " + menuFoodItemList[1] + "\n" + "is this correct?");
+                    System.out.println("you have selected menu item " +selectedFood + ", " + menuFoodItemList[1] + "\n");
                     consoleInput.next();
 
                     break;
                 } else if (selectedFood == 3) {
 
-                    selectedFoodInt = 3;
-                    System.out.println("you have selected menu item " +selectedFoodInt + ", " + menuFoodItemList[2] + "\n" + "is this correct?");
+                    System.out.println("you have selected menu item " + selectedFood + ", " + menuFoodItemList[2] + "\n");
                     consoleInput.next();
-                    String selectionYesNo = consoleInput.next().toLowerCase();
-                    if (selectionYesNo.length() < 1) {
-                        System.out.println("Please enter yes or no.");
 
-                    } else if (!selectionYesNo.matches("[a-zA-Z]+")) {
-                        System.out.println("Please enter yes or no.");
-                    } else{
-                        if (selectionYesNo.matches(confirmSelection[0])) {
-                            System.out.println("Great,");
-                            break;
-                        }
-                        else if (selectionYesNo.matches(confirmSelection[1])){
-                            breakfastMenuList();
-                        }
-                    }
-                   break;
+                    break;
                 }
+
             }
         }
     }
